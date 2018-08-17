@@ -45,8 +45,13 @@ class index extends React.Component {
   }
 
   componentDidMount() {
+    const filter = {
+      include: {
+        jobs: true
+      }
+    };
     try {
-      this.fetcher.all("companies").then(result => {
+      this.fetcher.all("companies", filter).then(result => {
         this.setState({ companies: result });
       });
     } catch (error) {
