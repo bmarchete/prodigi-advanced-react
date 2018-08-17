@@ -11,13 +11,15 @@ class Fetcher {
 
     this.loginUrl = "";
     this.baseUrl = "https://prodigi-api-advanced.herokuapp.com/api";
+    this.token =
+      "?access_token=F6OWxTVuyxNHOGepvQtC369e7OmGqTFl5ATjhRBs2ms2CVdcJLUzYeeXVeZwBo7k";
 
     return Fetcher.instance;
   }
 
   async all(url, filter = "") {
     return await this.fetch(
-      `${url}${filter ? `?filter=${JSON.stringify(filter)}` : ""}`
+      `${url}${this.token}${filter ? `&filter=${JSON.stringify(filter)}` : ""}`
     );
   }
 
